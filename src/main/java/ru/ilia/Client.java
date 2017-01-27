@@ -9,6 +9,8 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ILIA on 18.12.2016.
@@ -25,10 +27,13 @@ public class Client {
 //        System.out.println(hello.getHelloWorld("GGG"));
 
         Price price1=null, price2=null, price3=null;
-        boolean result=false;
+        ArrayList<Price> result;
         try {
             PriceDAO priceDAO=new PriceDAO();
-            price1=priceDAO.createPrice(new Price(721));
+            result=(ArrayList<Price>) priceDAO.selectListWithOffset(4);
+            for (Price p : result){
+                System.out.println("Price: "+p.getPrice()+" | "+p.getId());
+            }
         }
         catch (ConstraintViolationException e){
             System.out.println("Error: "+e.getConstraintViolations().iterator().next().getMessage());
@@ -37,7 +42,7 @@ public class Client {
             e.printStackTrace();
         }
 
-        System.out.println("Price: "+price1.getId());
+//        System.out.println("Price: "+result);
 //        System.out.println("getPrice: "+price1.getPrice()+" | "+price1.getId());
     }
 }

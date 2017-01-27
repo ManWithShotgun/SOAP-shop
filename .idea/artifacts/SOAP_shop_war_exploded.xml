@@ -1,0 +1,54 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="SOAP-shop:war exploded">
+    <output-path>$PROJECT_DIR$/target/soap_serv</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SOAP-shop" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.sun.xml.ws:jaxws-rt:2.2.10" />
+          <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.2.12-b140109.1041" />
+          <element id="library" level="project" name="Maven: javax.xml.ws:jaxws-api:2.2.11" />
+          <element id="library" level="project" name="Maven: javax.xml.soap:javax.xml.soap-api:1.3.7" />
+          <element id="library" level="project" name="Maven: javax.annotation:javax.annotation-api:1.2" />
+          <element id="library" level="project" name="Maven: javax.jws:jsr181-api:1.0-MR1" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-core:2.2.10-b140802.1033" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-impl:2.2.10-b140802.1033" />
+          <element id="library" level="project" name="Maven: com.sun.xml.ws:policy:2.4" />
+          <element id="library" level="project" name="Maven: org.glassfish.gmbal:gmbal-api-only:3.1.0-b001" />
+          <element id="library" level="project" name="Maven: org.glassfish.external:management-api:3.0.0-b012" />
+          <element id="library" level="project" name="Maven: org.jvnet.staxex:stax-ex:1.7.7" />
+          <element id="library" level="project" name="Maven: com.sun.xml.stream.buffer:streambuffer:1.5.3" />
+          <element id="library" level="project" name="Maven: org.jvnet.mimepull:mimepull:1.9.4" />
+          <element id="library" level="project" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.13" />
+          <element id="library" level="project" name="Maven: org.glassfish.ha:ha-api:3.1.9" />
+          <element id="library" level="project" name="Maven: com.sun.xml.messaging.saaj:saaj-impl:1.3.25" />
+          <element id="library" level="project" name="Maven: org.codehaus.woodstox:woodstox-core-asl:4.2.0" />
+          <element id="library" level="project" name="Maven: org.codehaus.woodstox:stax2-api:3.1.1" />
+          <element id="library" level="project" name="Maven: com.sun.org.apache.xml.internal:resolver:20050927" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-entitymanager:4.1.7.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.1.0.GA" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.15.0-GA" />
+          <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:4.0.1.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:4.1.7.Final" />
+          <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:5.3.4.Final" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
+          <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.3.1" />
+          <element id="library" level="project" name="Maven: javax.el:javax.el-api:2.2.4" />
+          <element id="library" level="project" name="Maven: org.glassfish.web:javax.el:2.2.4" />
+          <element id="library" level="project" name="Maven: javassist:javassist:3.12.1.GA" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.18" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/soap_serv/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="SOAP-shop/web/Web" />
+    </root>
+  </artifact>
+</component>

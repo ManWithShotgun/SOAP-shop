@@ -4,6 +4,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import ru.ilia.model.entity.Price;
 
+import java.util.List;
+
 /**
  * Created by ILIA on 26.01.2017.
  */
@@ -57,6 +59,17 @@ public class PriceDAO extends DAO {
         result=q.executeUpdate();
         commit();
         return result==1;
+    }
+
+    public List<Price> selectListWithOffset(int offset){
+        List<Price> result;
+        begin();
+        Query q = getSession().createQuery("select p from Price p where p.price > 23000");
+        q.setFirstResult(2);
+        q.setMaxResults(3);
+        result=q.list();
+        commit();
+        return result;
     }
 
 
