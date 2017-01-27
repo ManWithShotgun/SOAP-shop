@@ -1,5 +1,5 @@
 
-package ru.ilia.model.entity;
+package ru.ilia.soap.model.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Price", namespace = "http://www.soap-shop.ru", propOrder = {
+@XmlType(name = "Price", namespace = "http://www.service-shop.ru", propOrder = {
     "id",
     "price"
 })
@@ -38,12 +38,12 @@ import javax.xml.bind.annotation.XmlType;
 @Table(name="prices")
 public class Price {
 
-    @XmlElement(namespace = "http://www.soap-shop.ru")
+    @XmlElement(namespace = "http://www.service-shop.ru")
     @Id
     @Column(name="id_price")
     @GeneratedValue
     protected long id;
-    @XmlElement(namespace = "http://www.soap-shop.ru")
+    @XmlElement(namespace = "http://www.service-shop.ru")
     @Min(0)
     protected int price;
 

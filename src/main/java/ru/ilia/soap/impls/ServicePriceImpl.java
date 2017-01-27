@@ -1,20 +1,18 @@
-package ru.ilia.impls;
+package ru.ilia.soap.impls;
 
-import ru.ilia.model.dao.Factory;
-import ru.ilia.model.entity.CustomError;
-import ru.ilia.model.entity.Price;
-import ru.ilia.model.entity.PriceList;
-import ru.ilia.model.entity.PriceListRequest;
-import ru.ilia.soap.ServicePrice;
+import ru.ilia.soap.model.dao.Factory;
+import ru.ilia.soap.model.entity.CustomError;
+import ru.ilia.soap.model.entity.Price;
+import ru.ilia.soap.model.entity.PriceList;
+import ru.ilia.soap.model.entity.PriceListRequest;
+import ru.ilia.soap.service.ServicePrice;
 
 import javax.jws.WebService;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ILIA on 26.01.2017.
  */
-@WebService(endpointInterface = "ru.ilia.soap.ServicePrice")
+@WebService(endpointInterface = "ru.ilia.soap.service.ServicePrice")
 public class ServicePriceImpl implements ServicePrice {
     @Override
     public Price createPrice(int price) {

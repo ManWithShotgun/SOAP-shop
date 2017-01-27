@@ -1,5 +1,5 @@
 
-package ru.ilia.model.entity;
+package ru.ilia.soap.model.entity;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

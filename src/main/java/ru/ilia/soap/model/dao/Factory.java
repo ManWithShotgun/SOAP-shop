@@ -1,4 +1,4 @@
-package ru.ilia.model.dao;
+package ru.ilia.soap.model.dao;
 
 /**
  * Created by ILIA on 27.01.2017.

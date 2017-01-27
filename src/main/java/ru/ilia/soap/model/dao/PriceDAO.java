@@ -1,13 +1,10 @@
-package ru.ilia.model.dao;
+package ru.ilia.soap.model.dao;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
-import ru.ilia.model.entity.Price;
-import ru.ilia.model.entity.PriceList;
-import ru.ilia.model.entity.PriceListRequest;
-
-import java.util.ArrayList;
-import java.util.List;
+import ru.ilia.soap.model.entity.Price;
+import ru.ilia.soap.model.entity.PriceList;
+import ru.ilia.soap.model.entity.PriceListRequest;
 
 /**
  * Created by ILIA on 26.01.2017.

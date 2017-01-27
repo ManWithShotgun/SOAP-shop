@@ -2,6 +2,6 @@
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
     <endpoint
             name="ServicePriceImpl"
-            implementation="ru.ilia.impls.ServicePriceImpl"
+            implementation="ru.ilia.soap.impls.ServicePriceImpl"
             url-pattern="/priceWS"/>
 </endpoints>

@@ -1,14 +1,13 @@
-package ru.ilia.soap;
+package ru.ilia.soap.service;
 
-import ru.ilia.model.entity.CustomError;
-import ru.ilia.model.entity.Price;
-import ru.ilia.model.entity.PriceList;
-import ru.ilia.model.entity.PriceListRequest;
+import ru.ilia.soap.model.entity.CustomError;
+import ru.ilia.soap.model.entity.Price;
+import ru.ilia.soap.model.entity.PriceList;
+import ru.ilia.soap.model.entity.PriceListRequest;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
-import java.util.List;
 
 /**
  * Created by ILIA on 26.01.2017.

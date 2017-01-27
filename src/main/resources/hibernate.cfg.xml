@@ -11,6 +11,6 @@
         <property name="current_session_context_class">thread</property>
         <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
         <!--        <mapping jar="hibernate-mappings.jar"/> -->
-        <mapping class="ru.ilia.model.entity.Price"/>
+        <mapping class="ru.ilia.soap.model.entity.Price"/>
     </session-factory>
 </hibernate-configuration>
