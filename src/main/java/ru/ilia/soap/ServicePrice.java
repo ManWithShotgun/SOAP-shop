@@ -1,5 +1,6 @@
 package ru.ilia.soap;
 
+import ru.ilia.model.entity.CustomError;
 import ru.ilia.model.entity.Price;
 
 import javax.jws.WebMethod;
@@ -24,4 +25,7 @@ public interface ServicePrice {
 
     @WebMethod
     boolean deletePrice(long id);
+
+    @WebMethod
+    CustomError testError();
 }

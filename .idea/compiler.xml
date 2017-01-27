@@ -28,6 +28,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ilia" target="1.7" />
+      <module name="rest-shop" target="1.7" />
       <module name="SOAP-shop" target="1.7" />
     </bytecodeTargetLevel>
   </component>

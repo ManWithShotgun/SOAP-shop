@@ -1,6 +1,8 @@
 package ru.ilia.impls;
 
+import ru.ilia.model.dao.Factory;
 import ru.ilia.model.dao.PriceDAO;
+import ru.ilia.model.entity.CustomError;
 import ru.ilia.model.entity.Price;
 import ru.ilia.soap.ServicePrice;
 
@@ -15,8 +17,7 @@ public class ServicePriceImpl implements ServicePrice {
     public Price createPrice(int price) {
         Price priceResult=new Price(price);
         try {
-            PriceDAO priceDAO = new PriceDAO();
-            priceResult=priceDAO.createPrice(new Price(price));
+            priceResult= Factory.getInstance().getPriceDAO().createPrice(new Price(price));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -28,8 +29,7 @@ public class ServicePriceImpl implements ServicePrice {
     public boolean updatePrice(Price price) {
 //        boolean result=false;
         try {
-            PriceDAO priceDAO = new PriceDAO();
-            priceDAO.updatePrice(price);
+            Factory.getInstance().getPriceDAO().updatePrice(price);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,8 +40,7 @@ public class ServicePriceImpl implements ServicePrice {
     public Price selectPrice(long id) {
         Price priceResult=null;
         try {
-            PriceDAO priceDAO = new PriceDAO();
-            priceResult=priceDAO.selectPriceById(id);
+            priceResult=Factory.getInstance().getPriceDAO().selectPriceById(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -52,11 +51,15 @@ public class ServicePriceImpl implements ServicePrice {
     public boolean deletePrice(long id) {
         boolean result=false;
         try {
-            PriceDAO priceDAO = new PriceDAO();
-            result=priceDAO.deletePriceById(id);
+            result=Factory.getInstance().getPriceDAO().deletePriceById(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
+    }
+
+    @Override
+    public CustomError testError() {
+        return CustomError.DELETE;
     }
 }

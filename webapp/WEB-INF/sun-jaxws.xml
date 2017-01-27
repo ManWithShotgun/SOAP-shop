@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
     <endpoint
-            name="PersonServiceImpl"
-            implementation="ru.ilia.impls.MonitorPriceImpl"
-            url-pattern="/personWS"/>
+            name="ServicePriceImpl"
+            implementation="ru.ilia.impls.ServicePriceImpl"
+            url-pattern="/priceWS"/>
 </endpoints>

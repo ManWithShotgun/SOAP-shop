@@ -1,8 +1,6 @@
 package ru.ilia;
 
-import ru.ilia.model.dao.PriceDAO;
-import ru.ilia.model.entity.Price;
-import ru.ilia.soap.HelloWorld;
+
 
 import javax.validation.ConstraintViolationException;
 import javax.xml.namespace.QName;
@@ -26,21 +24,19 @@ public class Client {
 //
 //        System.out.println(hello.getHelloWorld("GGG"));
 
-        Price price1=null, price2=null, price3=null;
-        ArrayList<Price> result;
-        try {
-            PriceDAO priceDAO=new PriceDAO();
-            result=(ArrayList<Price>) priceDAO.selectListWithOffset(4);
-            for (Price p : result){
-                System.out.println("Price: "+p.getPrice()+" | "+p.getId());
-            }
-        }
-        catch (ConstraintViolationException e){
-            System.out.println("Error: "+e.getConstraintViolations().iterator().next().getMessage());
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+//        Price price1=null, price2=null, price3=null;
+//        ArrayList<Price> result;
+//        try {
+//            AccountDAO accountDAO=new AccountDAO();
+//            accountDAO.createAccount(new Account("dsadasd","tttdasda",true, Role.admin));
+//
+//        }
+//        catch (ConstraintViolationException e){
+//            System.out.println("Error: "+e.getConstraintViolations().iterator().next().getMessage());
+//        }
+//        catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 //        System.out.println("Price: "+result);
 //        System.out.println("getPrice: "+price1.getPrice()+" | "+price1.getId());

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="ilia:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="soap_serv.war">
-      <element id="artifact" artifact-name="ilia:war exploded" />
-    </root>
-  </artifact>
-</component>

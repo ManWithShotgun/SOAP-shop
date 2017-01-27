@@ -64,8 +64,8 @@ public class PriceDAO extends DAO {
     public List<Price> selectListWithOffset(int offset){
         List<Price> result;
         begin();
-        Query q = getSession().createQuery("select p from Price p where p.price > 23000");
-        q.setFirstResult(2);
+        Query q = getSession().createQuery("select p from Price p where p.price < 750");
+        q.setFirstResult(0);
         q.setMaxResults(3);
         result=q.list();
         commit();
