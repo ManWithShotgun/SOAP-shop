@@ -6,6 +6,7 @@ import ru.ilia.model.entity.Price;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
+import java.util.List;
 
 /**
  * Created by ILIA on 26.01.2017.
@@ -25,6 +26,9 @@ public interface ServicePrice {
 
     @WebMethod
     boolean deletePrice(long id);
+
+//    @WebMethod
+//    List<Price> selectList(List<Long> list);
 
     @WebMethod
     CustomError testError();

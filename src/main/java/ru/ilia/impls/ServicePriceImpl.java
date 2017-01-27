@@ -7,6 +7,7 @@ import ru.ilia.model.entity.Price;
 import ru.ilia.soap.ServicePrice;
 
 import javax.jws.WebService;
+import java.util.List;
 
 /**
  * Created by ILIA on 26.01.2017.
@@ -57,6 +58,17 @@ public class ServicePriceImpl implements ServicePrice {
         }
         return result;
     }
+
+//    @Override
+//    public List<Price> selectList(List<Long> list) {
+//        List<Price> result = null;
+//        try {
+//            result=Factory.getInstance().getPriceDAO().selectList(list);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return result;
+//    }
 
     @Override
     public CustomError testError() {

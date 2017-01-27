@@ -2,6 +2,10 @@ package ru.ilia;
 
 
 
+import ru.ilia.model.dao.Factory;
+import ru.ilia.model.entity.Price;
+
+import javax.management.relation.Role;
 import javax.validation.ConstraintViolationException;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -24,19 +28,29 @@ public class Client {
 //
 //        System.out.println(hello.getHelloWorld("GGG"));
 
-//        Price price1=null, price2=null, price3=null;
-//        ArrayList<Price> result;
-//        try {
-//            AccountDAO accountDAO=new AccountDAO();
-//            accountDAO.createAccount(new Account("dsadasd","tttdasda",true, Role.admin));
-//
-//        }
-//        catch (ConstraintViolationException e){
-//            System.out.println("Error: "+e.getConstraintViolations().iterator().next().getMessage());
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        Price price1=null;
+        Price price2=null;
+        Price price3=null;
+        ArrayList<Price> result;
+        try {
+            ArrayList<Long> list=new ArrayList<>();
+            list.add(3L);
+            list.add(4L);
+            list.add(5L);
+            list.add(6L);
+            ArrayList<Price> prices= (ArrayList<Price>) Factory.getInstance().getPriceDAO().selectList(list);
+
+            for (Price p : prices){
+                System.out.println(p.getId()+" | "+p.getPrice());
+            }
+
+        }
+        catch (ConstraintViolationException e){
+            System.out.println("Error: "+e.getConstraintViolations().iterator().next().getMessage());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
 //        System.out.println("Price: "+result);
 //        System.out.println("getPrice: "+price1.getPrice()+" | "+price1.getId());

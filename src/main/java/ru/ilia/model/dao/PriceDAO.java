@@ -4,6 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import ru.ilia.model.entity.Price;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,13 +62,14 @@ public class PriceDAO extends DAO {
         return result==1;
     }
 
-    public List<Price> selectListWithOffset(int offset){
-        List<Price> result;
+    public List<Price> selectList(List<Long> list){
+        List<Price> result=new ArrayList<>(list.size());
         begin();
-        Query q = getSession().createQuery("select p from Price p where p.price < 750");
-        q.setFirstResult(0);
-        q.setMaxResults(3);
-        result=q.list();
+        Query q = getSession().createQuery("from Price where id_price = :id");
+        for (Long id : list){
+            q.setLong("id", id);
+            result.add((Price) q.uniqueResult());
+        }
         commit();
         return result;
     }
