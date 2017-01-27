@@ -2,6 +2,8 @@ package ru.ilia.soap;
 
 import ru.ilia.model.entity.CustomError;
 import ru.ilia.model.entity.Price;
+import ru.ilia.model.entity.PriceList;
+import ru.ilia.model.entity.PriceListRequest;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -27,8 +29,8 @@ public interface ServicePrice {
     @WebMethod
     boolean deletePrice(long id);
 
-//    @WebMethod
-//    List<Price> selectList(List<Long> list);
+    @WebMethod
+    PriceList selectList(PriceListRequest list);
 
     @WebMethod
     CustomError testError();

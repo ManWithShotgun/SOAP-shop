@@ -1,12 +1,14 @@
 package ru.ilia.impls;
 
 import ru.ilia.model.dao.Factory;
-import ru.ilia.model.dao.PriceDAO;
 import ru.ilia.model.entity.CustomError;
 import ru.ilia.model.entity.Price;
+import ru.ilia.model.entity.PriceList;
+import ru.ilia.model.entity.PriceListRequest;
 import ru.ilia.soap.ServicePrice;
 
 import javax.jws.WebService;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,9 +18,9 @@ import java.util.List;
 public class ServicePriceImpl implements ServicePrice {
     @Override
     public Price createPrice(int price) {
-        Price priceResult=new Price(price);
+        Price priceResult=new Price();
         try {
-            priceResult= Factory.getInstance().getPriceDAO().createPrice(new Price(price));
+            priceResult= Factory.getInstance().getPriceDAO().createPrice(new Price());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,16 +61,17 @@ public class ServicePriceImpl implements ServicePrice {
         return result;
     }
 
-//    @Override
-//    public List<Price> selectList(List<Long> list) {
-//        List<Price> result = null;
-//        try {
-//            result=Factory.getInstance().getPriceDAO().selectList(list);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return result;
-//    }
+    @Override
+    public PriceList selectList(PriceListRequest list) {
+        PriceList result=null;
+        try {
+
+            result=Factory.getInstance().getPriceDAO().selectList(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     @Override
     public CustomError testError() {

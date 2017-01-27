@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.soap-shop.ru"
+        xmlns:private="http://www.soap-shop.ru"
+        xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <complexType name="Price">
+        <sequence>
+            <element name="id" type="long"/>
+            <element name="price" type="int"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="PriceList">
+        <choice maxOccurs="unbounded">
+            <element name="priceList" type="private:Price"/>
+        </choice>
+    </complexType>
+
+    <complexType name="PriceListRequest">
+        <choice maxOccurs="unbounded">
+            <element name="idList" type="long"/>
+        </choice>
+    </complexType>
+</schema>

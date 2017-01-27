@@ -3,6 +3,8 @@ package ru.ilia.model.dao;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import ru.ilia.model.entity.Price;
+import ru.ilia.model.entity.PriceList;
+import ru.ilia.model.entity.PriceListRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,16 +64,17 @@ public class PriceDAO extends DAO {
         return result==1;
     }
 
-    public List<Price> selectList(List<Long> list){
-        List<Price> result=new ArrayList<>(list.size());
+    public PriceList selectList(PriceListRequest list){
+        PriceList priceList=new PriceList();
+//        List<Price> result=new ArrayList<>(list.size());
         begin();
         Query q = getSession().createQuery("from Price where id_price = :id");
-        for (Long id : list){
+        for (Long id : list.getIdList()){
             q.setLong("id", id);
-            result.add((Price) q.uniqueResult());
+            priceList.getPriceList().add((Price) q.uniqueResult());
         }
         commit();
-        return result;
+        return priceList;
     }
 
 
