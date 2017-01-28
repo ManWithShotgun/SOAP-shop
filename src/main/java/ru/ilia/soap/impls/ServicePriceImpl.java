@@ -18,7 +18,7 @@ public class ServicePriceImpl implements ServicePrice {
     public Price createPrice(int price) {
         Price priceResult=new Price();
         try {
-            priceResult= Factory.getInstance().getPriceDAO().createPrice(new Price());
+            priceResult= Factory.getInstance().getPriceDAO().createPrice(new Price(price));
         } catch (Exception e) {
             e.printStackTrace();
         }
