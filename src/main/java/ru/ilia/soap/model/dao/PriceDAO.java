@@ -2,6 +2,7 @@ package ru.ilia.soap.model.dao;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import ru.ilia.soap.model.entity.Price;
 import ru.ilia.soap.model.entity.PriceList;
 import ru.ilia.soap.model.entity.PriceListRequest;
@@ -12,65 +13,65 @@ import ru.ilia.soap.model.entity.PriceListRequest;
 public class PriceDAO extends DAO {
 
     public Price createPrice(Price price) throws Exception {
+        Session session=begin();
         try {
 //            int result=-1
-            begin();
-            getSession().save(price);
-            commit();
+            session.save(price);
+            commit(session);
             return price;
         } catch (HibernateException e) {
-            rollback();
+            rollback(session);
             throw new Exception("DAO error: "+e);
         }
     }
 
     public Price selectPriceById(long id) throws Exception {
+        Session session=begin();
         try {
-            begin();
 //            Price price=getSession().get(Price.class,id);
-            Query q = getSession().createQuery("from Price where id_price = :id");
+            Query q = session.createQuery("from Price where id_price = :id");
             q.setLong("id", id);
             Price price = (Price) q.uniqueResult();
-            commit();
+            commit(session);
             return price;
         } catch (HibernateException e) {
-            rollback();
+            rollback(session);
             throw new Exception("DAO error: " + e);
         }
     }
 
     public void updatePrice(Price price){
-        begin();
-        getSession().update(price);
-        commit();
+        Session session=begin();
+        session.update(price);
+        commit(session);
     }
 
     public void deletePrice(Price price){
-        begin();
-        getSession().delete(price);
-        commit();
+        Session session=begin();
+        session.delete(price);
+        commit(session);
     }
 
     public boolean deletePriceById(long id){
         int result;
-        begin();
-        Query q = getSession().createQuery("delete from Price where id_price = :id");
+        Session session=begin();
+        Query q = session.createQuery("delete from Price where id_price = :id");
         q.setLong("id", id);
         result=q.executeUpdate();
-        commit();
+        commit(session);
         return result==1;
     }
 
     public PriceList selectList(PriceListRequest list){
         PriceList priceList=new PriceList();
 //        List<Price> result=new ArrayList<>(list.size());
-        begin();
-        Query q = getSession().createQuery("from Price where id_price = :id");
+        Session session=begin();
+        Query q = session.createQuery("from Price where id_price = :id");
         for (Long id : list.getIdList()){
             q.setLong("id", id);
             priceList.getPriceList().add((Price) q.uniqueResult());
         }
-        commit();
+        commit(session);
         return priceList;
     }
 

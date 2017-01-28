@@ -25,43 +25,30 @@ public class DAO {
     }
 
 
-
-
-
-
     protected DAO() {
     }
 
-    private  Session session;
-
-    protected  Session getSession() {
+    protected Session begin() {
+        Session session=DAO.getSessionFactory().openSession();
+        session.beginTransaction();
         return session;
     }
 
-
-    protected void begin() {
-        session = DAO.getSessionFactory().getCurrentSession();
-        getSession().beginTransaction();
+    protected void commit(Session session) {
+        session.getTransaction().commit();
+        session.close();
     }
 
-    protected void commit() {
-        getSession().getTransaction().commit();
-    }
-
-    protected void rollback() {
+    protected void rollback(Session session) {
         try {
-            getSession().getTransaction().rollback();
+            session.getTransaction().rollback();
         } catch (HibernateException e) {
 //            log.log(Level.WARNING, "Cannot rollback", e);
         }
         try {
-            getSession().close();
+            session.close();
         } catch (HibernateException e) {
 //            log.log(Level.WARNING, "Cannot close", e);
         }
-    }
-
-    public void close() {
-        getSession().close();
     }
 }
