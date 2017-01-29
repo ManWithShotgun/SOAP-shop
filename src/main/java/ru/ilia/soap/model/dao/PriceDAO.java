@@ -1,5 +1,6 @@
 package ru.ilia.soap.model.dao;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -12,67 +13,99 @@ import ru.ilia.soap.model.entity.PriceListRequest;
  */
 public class PriceDAO extends DAO {
 
+    private static final Logger log=Logger.getLogger("PriceDAO");
+
     public Price createPrice(Price price) throws Exception {
         Session session=begin();
         try {
-//            int result=-1
             session.save(price);
             commit(session);
+            log.info(price);
             return price;
         } catch (HibernateException e) {
+            log.error(e.getMessage());
             rollback(session);
-            throw new Exception("DAO error: "+e);
+            throw new Exception("create price error: "+e);
         }
     }
 
     public Price selectPriceById(long id) throws Exception {
         Session session=begin();
         try {
-//            Price price=getSession().get(Price.class,id);
+            log.info("id: "+id);
             Query q = session.createQuery("from Price where id_price = :id");
             q.setLong("id", id);
             Price price = (Price) q.uniqueResult();
             commit(session);
+            log.info(price);
             return price;
         } catch (HibernateException e) {
+            log.error(e.getMessage());
             rollback(session);
-            throw new Exception("DAO error: " + e);
+            throw new Exception("select price error: " + e);
         }
     }
 
-    public void updatePrice(Price price){
+    public void updatePrice(Price price) throws Exception {
         Session session=begin();
-        session.update(price);
-        commit(session);
+        try {
+            log.info(price);
+            session.update(price);
+            commit(session);
+        }catch (HibernateException e) {
+            log.error(e.getMessage());
+            rollback(session);
+            throw new Exception("update price error: " + e);
+        }
     }
 
-    public void deletePrice(Price price){
+    public void deletePrice(Price price) throws Exception {
         Session session=begin();
-        session.delete(price);
-        commit(session);
+        try {
+            log.info(price);
+            session.delete(price);
+            commit(session);
+        }catch (HibernateException e) {
+            log.error(e.getMessage());
+            rollback(session);
+            throw new Exception("delete price error: " + e);
+        }
     }
 
-    public boolean deletePriceById(long id){
+    public boolean deletePriceById(long id) throws Exception {
         int result;
         Session session=begin();
-        Query q = session.createQuery("delete from Price where id_price = :id");
-        q.setLong("id", id);
-        result=q.executeUpdate();
-        commit(session);
-        return result==1;
+        try {
+            log.info("id: "+id);
+            Query q = session.createQuery("delete from Price where id_price = :id");
+            q.setLong("id", id);
+            result = q.executeUpdate();
+            commit(session);
+            return result == 1;
+        }catch (HibernateException e) {
+            log.error(e.getMessage());
+            rollback(session);
+            throw new Exception("delete price error: " + e);
+        }
     }
 
-    public PriceList selectList(PriceListRequest list){
+    public PriceList selectList(PriceListRequest list) throws Exception {
         PriceList priceList=new PriceList();
-//        List<Price> result=new ArrayList<>(list.size());
         Session session=begin();
-        Query q = session.createQuery("from Price where id_price = :id");
-        for (Long id : list.getIdList()){
-            q.setLong("id", id);
-            priceList.getPriceList().add((Price) q.uniqueResult());
+        try {
+            Query q = session.createQuery("from Price where id_price = :id");
+            for (Long id : list.getIdList()) {
+                q.setLong("id", id);
+                priceList.getPriceList().add((Price) q.uniqueResult());
+                log.info("select id: "+id);
+            }
+            commit(session);
+            return priceList;
+        }catch (HibernateException e) {
+            log.error(e.getMessage());
+            rollback(session);
+            throw new Exception("select list error: " + e);
         }
-        commit(session);
-        return priceList;
     }
 
 

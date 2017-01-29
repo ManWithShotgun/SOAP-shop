@@ -7,6 +7,7 @@
           <element id="module-output" name="SOAP-shop" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.12" />
           <element id="library" level="project" name="Maven: com.sun.xml.ws:jaxws-rt:2.2.10" />
           <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.2.12-b140109.1041" />
           <element id="library" level="project" name="Maven: javax.xml.ws:jaxws-api:2.2.11" />

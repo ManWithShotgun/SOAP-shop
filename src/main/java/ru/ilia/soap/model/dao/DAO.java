@@ -1,5 +1,6 @@
 package ru.ilia.soap.model.dao;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,6 +12,8 @@ import org.hibernate.service.ServiceRegistryBuilder;
  * Created by ILIA on 26.01.2017.
  */
 public class DAO {
+
+    private static final Logger log=Logger.getLogger("DAO");
 
     private static final SessionFactory sessionFactory = configureSessionFactory();
 
@@ -43,12 +46,12 @@ public class DAO {
         try {
             session.getTransaction().rollback();
         } catch (HibernateException e) {
-//            log.log(Level.WARNING, "Cannot rollback", e);
+            log.warn("Cannot rollback", e);
         }
         try {
             session.close();
         } catch (HibernateException e) {
-//            log.log(Level.WARNING, "Cannot close", e);
+            log.warn("Cannot close", e);
         }
     }
 }

@@ -54,6 +54,11 @@ public class Price {
         this.price = price;
     }
 
+    @Override
+    public String toString() {
+        return String.format("Price: id: %d price: %d", this.id, this.price);
+    }
+
     /**
      * Gets the value of the id property.
      * 

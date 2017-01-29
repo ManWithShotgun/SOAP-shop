@@ -1,5 +1,6 @@
 package ru.ilia.soap.impls;
 
+import org.apache.log4j.Logger;
 import ru.ilia.soap.model.dao.Factory;
 import ru.ilia.soap.model.entity.CustomError;
 import ru.ilia.soap.model.entity.Price;
@@ -14,61 +15,72 @@ import javax.jws.WebService;
  */
 @WebService(endpointInterface = "ru.ilia.soap.service.ServicePrice")
 public class ServicePriceImpl implements ServicePrice {
+
+    private static final Logger log=Logger.getLogger("ServicePriceImpl");
+
     @Override
     public Price createPrice(int price) {
         Price priceResult=new Price();
         try {
+            log.info("CREATE");
             priceResult= Factory.getInstance().getPriceDAO().createPrice(new Price(price));
+            // if id null
+            return priceResult;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Create err",e);
+            return  priceResult;// id: 0, price: 0
         }
-        // if id null
-        return priceResult;
     }
 
     @Override
     public boolean updatePrice(Price price) {
-//        boolean result=false;
         try {
+            log.info("UPDATE");
             Factory.getInstance().getPriceDAO().updatePrice(price);
+            return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Update err",e);
+            return false;
         }
-        return true;
     }
 
     @Override
     public Price selectPrice(long id) {
         Price priceResult=null;
         try {
+            log.info("SELECT");
             priceResult=Factory.getInstance().getPriceDAO().selectPriceById(id);
+            return priceResult;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Update err",e);
+            return priceResult;
         }
-        return priceResult;
     }
 
     @Override
     public boolean deletePrice(long id) {
         boolean result=false;
         try {
+            log.info("DELETE");
             result=Factory.getInstance().getPriceDAO().deletePriceById(id);
+            return result;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Delete err",e);
+            return result;
         }
-        return result;
     }
 
     @Override
     public PriceList selectList(PriceListRequest list) {
         PriceList result=null;
         try {
-
+            log.info("SELECT LIST");
             result=Factory.getInstance().getPriceDAO().selectList(list);
+            return result;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Delete err",e);
+            return result;
         }
-        return result;
     }
 
     @Override
